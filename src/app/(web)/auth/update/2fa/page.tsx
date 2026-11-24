@@ -6,7 +6,7 @@ import { FiLogIn, FiLock, FiSmartphone, FiCheckCircle, FiCopy } from "react-icon
 import { useCurrentSystemUser } from "@/lib/hooks/users/account/current/useCurrentSystemUser";
 import { start2faSetup, confirm2faSetup, disable2fa } from "@/lib/services/auth/supportService";
 
-const CURRENT_PANEL = "ati-teas";
+const CURRENT_PANEL = "nclex-rn";
 
 function InfoRow({ label, value }: { label: string; value?: string | number | null }) {
   return (

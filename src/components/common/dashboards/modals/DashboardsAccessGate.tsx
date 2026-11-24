@@ -14,14 +14,8 @@ import {
 } from "@/components/common/dashboards/modals/AccessReminderModals";
 
 const PANELS: Record<string, string> = {
-  "ati-teas": "Ati Teas",
-  "hesi-a2": "Hesi A2",
-  "pre-nursing": "Pre Nursing",
-  "rn-nursing": "RN Nursing",
-  "lpn-nursing": "LPN Nursing",
   "nclex-rn": "NCLEX RN",
   "nclex-pn": "NCLEX PN",
-  certification: "Certification",
 };
 
 type PkgWithCluster = DiscreteSubscriptionPackage & {

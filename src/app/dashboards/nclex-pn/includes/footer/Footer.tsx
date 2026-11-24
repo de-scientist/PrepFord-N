@@ -53,7 +53,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-5">
         <div className="flex flex-col items-center gap-3 md:flex-row md:justify-between">
           <span className="text-center opacity-70 md:text-left">
-            &copy; {new Date().getFullYear()} Qlex Nursing. All rights reserved.
+            &copy; {new Date().getFullYear()} {APP_NAME}. All rights reserved.
           </span>
 
           <button

@@ -9,13 +9,7 @@ import { useMemo } from "react";
 
 const SEGMENT_DASHBOARD_MAP: Record<string, string> = {
   NCLEX_RN: 'nclex-rn',
-  HESI_A2: 'hesi-a2',
-  PRE_NURSING: 'pre-nursing',
-  RN_NURSING: 'rn-nursing',
-  LPN_NURSING: 'lpn-nursing',
-  ATI_TEAS: 'ati-teas',
   NCLEX_PN: 'nclex-pn',
-  CERTIFICATION: 'certification',
 };
 
 // Shared "learning" group + "subjects" child-strata slug used for the

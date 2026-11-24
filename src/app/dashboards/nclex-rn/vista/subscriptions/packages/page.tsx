@@ -364,18 +364,14 @@ export default function DiscreteSubscriptionPackagesPage() {
     setIsSubmittingAction(true);
 
     try {
-      // ⚠️ NOTE: Wire this to the real backend once the RouteKey / service method is confirmed.
-      // Suggested shape, following the dominionService pattern used by this hook:
-      //
-      // await dominionService("SubscriptionPackage", pendingAction.type === "cancel" ? "CancelSubscription" : "ToggleAutoRenew", {
-      //   subscriptionId: pendingAction.subscriptionId,
-      // });
-
+      // Fail-closed: Do not fabricate cancellation or auto-renew state changes on the client
+      // when an authoritative backend mutation endpoint is not yet wired.
       showToast(
         pendingAction.type === "cancel"
-          ? `Subscription "${pendingAction.subscriptionGuidId}" Cancelled Successfully ⚓`
-          : `Auto Renew Updated For "${pendingAction.subscriptionGuidId}" ⚓`,
-        "success"
+          ? `Self-service cancellation for "${pendingAction.subscriptionGuidId}" requires backend provider verification. Please contact support with this Subscription ID.`
+          : `Self-service auto-renew update for "${pendingAction.subscriptionGuidId}" requires backend provider verification. Please contact support with this Subscription ID.`,
+        "info",
+        6000
       );
 
       setPendingAction(null);

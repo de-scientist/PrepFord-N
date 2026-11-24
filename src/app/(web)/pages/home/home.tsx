@@ -7,12 +7,6 @@ import { APP_NAME } from '@/lib/config/config';
 import AuthModal from "@/app/(web)/auth/modals/auth";
 
 const heroButtons = [
-  { label: "TEAS Prep", href: "/pages/exams/ati-teas", bg: "bg-emerald-50", border: "border-emerald-300", text: "text-emerald-800", hover: "hover:bg-emerald-500 hover:text-white" },
-  { label: "HESI A2 Prep", href: "/pages/exams/hesi-a2", bg: "bg-amber-50", border: "border-amber-300", text: "text-amber-800", hover: "hover:bg-amber-500 hover:text-white" },
-  { label: "RN Nursing Exams", href: "/pages/exams/rn-nursing", bg: "bg-sky-50", border: "border-sky-300", text: "text-sky-800", hover: "hover:bg-sky-500 hover:text-white" },
-  { label: "LPN Nursing Exams", href: "/pages/exams/lpn-nursing", bg: "bg-indigo-50", border: "border-indigo-300", text: "text-indigo-800", hover: "hover:bg-indigo-500 hover:text-white" },
-  { label: "RN Exit Exams", href: "/pages/exams/rn-nursing", bg: "bg-violet-50", border: "border-violet-300", text: "text-violet-800", hover: "hover:bg-violet-500 hover:text-white", hideOnMobile: true },
-  { label: "LPN Exit Exams", href: "/pages/exams/lpn-nursing", bg: "bg-pink-50", border: "border-pink-300", text: "text-pink-800", hover: "hover:bg-pink-500 hover:text-white", hideOnMobile: true },
   { label: "NCLEX-RN", href: "/pages/exams/nclex-rn", bg: "bg-rose-50", border: "border-rose-300", text: "text-rose-800", hover: "hover:bg-rose-500 hover:text-white" },
   { label: "NCLEX-PN", href: "/pages/exams/nclex-pn", bg: "bg-green-50", border: "border-green-300", text: "text-green-800", hover: "hover:bg-green-500 hover:text-white" },
 ];
@@ -117,7 +111,7 @@ const successSteps = [
 ];
 
 const examPathButtons = [
-  "TEAS Prep", "HESI A2 Prep", "RN Nursing", "LPN Nursing", "NCLEX-RN", "NCLEX-PN",
+  "NCLEX-RN", "NCLEX-PN",
 ];
 
 const flashcardTopics = ["Medical-Surgical", "Pediatrics", "Maternal-Newborn", "Pharmacology", "Mental Health", "Fundamentals"];

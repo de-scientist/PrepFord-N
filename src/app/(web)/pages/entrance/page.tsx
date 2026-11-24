@@ -82,25 +82,13 @@ const DEFAULT_PRESENTATION: SegmentPresentation = {
 // ─────────────────────────────────────────────────────────────────────────────
 
 const SEGMENT_DASHBOARD_MAP: Record<string, string> = {
-    ATI_TEAS: "ati-teas",
-    HESI_A2: "hesi-a2",
-    PRE_NURSING: "pre-nursing",
-    RN_NURSING: "rn-nursing",
-    LPN_NURSING: "lpn-nursing",
     NCLEX_RN: "nclex-rn",
     NCLEX_PN: "nclex-pn",
-    CERTIFICATION: "certification",
 };
 
 const SEGMENT_ORDER = [
-    "ATI_TEAS",
-    "HESI_A2",
-    "PRE_NURSING",
-    "RN_NURSING",
-    "LPN_NURSING",
-    "GED",
-    "CNA",
-    "CERTIFICATION",
+    "NCLEX_RN",
+    "NCLEX_PN",
 ] as const;
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -110,20 +98,22 @@ const SEGMENT_ORDER = [
 export default function EntrancePage() {
     const { programs, isLoading } = useRelativeStrataPrograms();
 
-    const orderedPrograms = [...programs].sort((a, b) => {
-        const aIndex = SEGMENT_ORDER.indexOf(
-            (a.segment ?? "") as (typeof SEGMENT_ORDER)[number]
-        );
+    const orderedPrograms = programs
+        .filter((p) => Boolean(SEGMENT_DASHBOARD_MAP[p.segment ?? ""]))
+        .sort((a, b) => {
+            const aIndex = SEGMENT_ORDER.indexOf(
+                (a.segment ?? "") as (typeof SEGMENT_ORDER)[number]
+            );
 
-        const bIndex = SEGMENT_ORDER.indexOf(
-            (b.segment ?? "") as (typeof SEGMENT_ORDER)[number]
-        );
+            const bIndex = SEGMENT_ORDER.indexOf(
+                (b.segment ?? "") as (typeof SEGMENT_ORDER)[number]
+            );
 
-        return (
-            (aIndex === -1 ? SEGMENT_ORDER.length : aIndex) -
-            (bIndex === -1 ? SEGMENT_ORDER.length : bIndex)
-        );
-    });
+            return (
+                (aIndex === -1 ? SEGMENT_ORDER.length : aIndex) -
+                (bIndex === -1 ? SEGMENT_ORDER.length : bIndex)
+            );
+        });
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 px-2 py-5 sm:px-6 sm:py-10 lg:px-8">

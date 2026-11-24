@@ -1,6 +1,7 @@
 // castoline/src/app/dashboards/admin/layout.tsx
 
 import Navbar from "./includes/navbar/Navbar";
+import { notFound } from "next/navigation";
 import LeftSidebar from "./includes/sidebar/left/LeftSidebar";
 import RightSidebar from "./includes/sidebar/right/RightSidebar";
 import Footer from "./includes/footer/Footer";
@@ -22,6 +23,7 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  notFound();
   return (
     <DashboardPreloader>
       <div className="flex min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">

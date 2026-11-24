@@ -35,19 +35,24 @@ const LATEST_WORDS = new Set([
 ]);
 
 // Fill in where each result should open. Scopes left out render as plain cards.
-// e.g. course: (guid) => `/web/ati-teas/vista/course?identifier=${guid}`
-const DEFAULT_DASHBOARD = "ati-teas"; // used for every non-program result
+// e.g. course: (guid) => `/web/nclex-rn/vista/course?identifier=${guid}`
+const DEFAULT_DASHBOARD = "nclex-rn"; // used for every non-program result
 const EXAM_MODES = ["Tutor", "Practice", "Exam", "Test", "Adaptive"] as const;
 
-const slugify = (s: string) =>
-    s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+const resolveSeekDashboard = (item: SeekItem): "nclex-rn" | "nclex-pn" => {
+    const candidate = `${item.programName ?? ""} ${item.segment ?? ""} ${item.name ?? ""}`.toLowerCase();
+    if (candidate.includes("nclex-pn") || candidate.includes("nclex_pn") || candidate.includes("nclex pn")) {
+        return "nclex-pn";
+    }
+    return DEFAULT_DASHBOARD;
+};
 
 const buildHref = (scope: SeekScope, item: SeekItem, mode: string): string | undefined => {
     const id = encodeURIComponent(item.guidId);
-    const dash = DEFAULT_DASHBOARD;
+    const dash = resolveSeekDashboard(item);
     switch (scope) {
         case "program":
-            return `/dashboards/${slugify(item.name) || dash}`;
+            return `/dashboards/${dash}`;
         case "course":
             return `/dashboards/${dash}/vista/learning/subjects/distinct/overview?identifier=${id}`;
         case "subject":

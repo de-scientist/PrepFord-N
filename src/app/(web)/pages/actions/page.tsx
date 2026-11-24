@@ -76,10 +76,6 @@ const SECTIONS: ActionSection[] = [
         subtitle: "Jump into prep content for a specific exam.",
         gradient: "from-amber-500/10 via-orange-500/10 to-rose-500/10",
         links: [
-            { title: "ATI TEAS", description: "Prep content for the ATI TEAS exam.", href: "/pages/exams/ati-teas", icon: FiActivity },
-            { title: "HESI A2", description: "Prep content for the HESI A2 exam.", href: "/pages/exams/hesi-a2", icon: FiActivity },
-            { title: "RN Nursing", description: "Prep content for RN Nursing.", href: "/pages/exams/rn-nursing", icon: FiActivity },
-            { title: "LPN Nursing", description: "Prep content for LPN Nursing.", href: "/pages/exams/lpn-nursing", icon: FiActivity },
             { title: "NCLEX-RN", description: "Prep content for the NCLEX-RN exam.", href: "/pages/exams/nclex-rn", icon: FiActivity },
             { title: "NCLEX-PN", description: "Prep content for the NCLEX-PN exam.", href: "/pages/exams/nclex-pn", icon: FiActivity },
         ],
@@ -89,10 +85,8 @@ const SECTIONS: ActionSection[] = [
         subtitle: "Go straight to your dashboard for an active program.",
         gradient: "from-blue-500/10 via-sky-500/10 to-cyan-500/10",
         links: [
-            { title: "ATI TEAS Dashboard", description: "Your results, progress, and live exams for ATI TEAS.", href: "/dashboards/ati-teas", icon: FiGrid },
-            { title: "HESI A2 Dashboard", description: "Your results, progress, and live exams for HESI A2.", href: "/dashboards/hesi-a2", icon: FiGrid },
-            { title: "RN Nursing Dashboard", description: "Your results, progress, and live exams for RN Nursing.", href: "/dashboards/rn-nusring", icon: FiGrid },
-            { title: "LPN Nursing Dashboard", description: "Your results, progress, and live exams for LPN Nursing.", href: "/dashboards/lpn-nursing", icon: FiGrid },
+            { title: "NCLEX-RN Dashboard", description: "Your results, progress, and live exams for NCLEX-RN.", href: "/dashboards/nclex-rn", icon: FiGrid },
+            { title: "NCLEX-PN Dashboard", description: "Your results, progress, and live exams for NCLEX-PN.", href: "/dashboards/nclex-pn", icon: FiGrid },
         ],
     },
     {

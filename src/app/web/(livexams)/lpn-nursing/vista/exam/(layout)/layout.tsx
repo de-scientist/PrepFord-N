@@ -1,7 +1,7 @@
 // src\app\web\(nursing)\atiteas\vista\exam\(layout)\layout.tsx
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { notFound, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import { LiveStrataExamProvider } from "@/lib/contexts/panel/assessment/LiveStrataExamContext";
 import { LiveExamActionProvider } from "@/lib/contexts/web/assessment/live/useLiveExamActionContext";
@@ -35,6 +35,7 @@ export default function LiveExamLayout({
 }: {
   children: React.ReactNode;
 }) {
+  notFound();
   return (
     <Suspense fallback={null}>
       <LiveExamLayoutInner>{children}</LiveExamLayoutInner>

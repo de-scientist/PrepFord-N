@@ -4,8 +4,8 @@ import { APP_NAME } from "@/lib/config/config";
 import { SITE_LINKS, SITE_URL } from "@/lib/config/siteLinks";
 
 export const metadata: Metadata = {
-  title: `Explore ${APP_NAME} – NCLEX, TEAS, HESI, RN & LPN Exams`,
-  description: `Quick links to ${APP_NAME}: NCLEX-RN, NCLEX-PN, ATI TEAS 7, HESI A2, RN and LPN exams, pricing, sign in and registration.`,
+  title: `Explore ${APP_NAME} – NCLEX-RN & NCLEX-PN Exam Preparation`,
+  description: `Quick links to ${APP_NAME}: NCLEX-RN and NCLEX-PN practice exams, dashboards, study programs, sign in and registration.`,
   alternates: { canonical: "/explore" },
 };
 

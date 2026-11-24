@@ -9,8 +9,8 @@ import { ThemeProvider } from '@/lib/contexts/panel/layout/theme/PanelThemeConte
 const outfit = Outfit({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Castoline LMS',
-  description: 'Global LMS system',
+  title: 'PrepFord — NCLEX-RN & NCLEX-PN Exam Preparation',
+  description: 'A focused learning platform for NCLEX-RN and NCLEX-PN candidates, built with clinical accuracy and transparent assessment at its core.',
 };
 
 export default function RootLayout({

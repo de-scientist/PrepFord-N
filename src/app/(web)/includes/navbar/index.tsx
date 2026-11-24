@@ -50,14 +50,8 @@ const getIcon = (name: string) => {
 };
 
 const SEGMENT_DASHBOARD_MAP: Record<string, string> = {
-  ATI_TEAS: 'ati-teas',
-  HESI_A2: 'hesi-a2',
-  PRE_NURSING: 'pre-nursing',
-  RN_NURSING: 'rn-nursing',
-  LPN_NURSING: 'lpn-nursing',
   NCLEX_RN: 'nclex-rn',
   NCLEX_PN: 'nclex-pn',
-  CERTIFICATION: 'certification',
 };
 
 export default function Navbar() {
@@ -126,19 +120,6 @@ export default function Navbar() {
     return activeDropdown === dropdownName;
   };
 
-  // Check if dropdown would go off screen and adjust position
-  const getDropdownPosition = (dropdownRef: React.RefObject<HTMLDivElement | null>): string => {
-    if (!dropdownRef.current) return 'left-0';
-
-    const rect = dropdownRef.current.getBoundingClientRect();
-    const viewportWidth = window.innerWidth;
-
-    if (rect.right > viewportWidth) {
-      return 'right-0';
-    }
-    return 'left-0';
-  };
-
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -189,114 +170,20 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/pages/exams/ati-teas"
+            href="/pages/exams/nclex-rn"
             className="font-bold hover:text-blue-500 transition-colors text-white md:text-gray-900 text-sm md:text-xs lg:text-sm xl:text-base"
             onClick={() => setActiveDropdown(null)}
           >
-            ATI-TEAS
+            NCLEX-RN
           </Link>
 
           <Link
-            href="/pages/exams/hesi-a2"
+            href="/pages/exams/nclex-pn"
             className="font-bold hover:text-blue-500 transition-colors text-white md:text-gray-900 text-sm md:text-xs lg:text-sm xl:text-base"
             onClick={() => setActiveDropdown(null)}
           >
-            HESI-A2
+            NCLEX-PN
           </Link>
-
-          {/* Mega Dropdown: Nursing Exams */}
-          <div className="relative" ref={dropdownRefs.nursingExams}>
-            <button
-              className={`font-bold flex items-center gap-1 hover:text-blue-500 transition-colors text-white md:text-gray-900 text-sm md:text-xs lg:text-sm xl:text-base ${isDropdownActive('nursingExams') ? 'text-blue-500' : ''
-                }`}
-              onMouseEnter={() => setActiveDropdown('nursingExams')}
-              onClick={() => toggleDropdown('nursingExams')}
-              aria-expanded={isDropdownActive('nursingExams')}
-              aria-haspopup="true"
-              aria-controls="nursingExams-dropdown"
-            >
-              Nursing School
-              <ChevronDown
-                className={`w-4 h-4 transition-transform ${isDropdownActive('nursingExams') ? 'rotate-180' : ''
-                  }`}
-              />
-            </button>
-
-            {isDropdownActive('nursingExams') && (
-              <div
-                className={`absolute ${getDropdownPosition(
-                  dropdownRefs.nursingExams
-                )} top-full pt-3 z-50 transform -translate-x-1/2`}
-                onMouseEnter={() => setActiveDropdown('nursingExams')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <div
-                  id="nursingExams-dropdown"
-                  className="w-[320px] bg-white text-gray-800 shadow-xl rounded-xl p-4 transition-all duration-300 opacity-100 translate-y-0 pointer-events-auto"
-                >
-                  <ul className="space-y-3">
-                    {/* RN-Nursing Exams */}
-                    <li>
-                      <Link
-                        href="/pages/exams/rn-nursing"
-                        className="hover:text-blue-600 transition-colors flex items-center gap-3 p-2 rounded-lg hover:bg-blue-50 group"
-                        onClick={() => setActiveDropdown(null)}
-                      >
-                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-200">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-5 h-5"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="M12 20h9" />
-                            <path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <h5 className="font-medium">RN-Nursing Test Bank</h5>
-                          <p className="text-xs text-gray-500">Registered Nurse prep</p>
-                        </div>
-                      </Link>
-                    </li>
-
-                    {/* LPN-Nursing Exams */}
-                    <li>
-                      <Link
-                        href="/pages/exams/lpn-nursing"
-                        className="hover:text-blue-600 transition-colors flex items-center gap-3 p-2 rounded-lg hover:bg-blue-50 group"
-                        onClick={() => setActiveDropdown(null)}
-                      >
-                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-hover:bg-blue-200">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-5 h-5"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="M12 20h9" />
-                            <path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <h5 className="font-medium">LPN-Nursing Test Bank</h5>
-                          <p className="text-xs text-gray-500">Licensed Practical Nurse</p>
-                        </div>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            )}
-          </div>
 
           {/* Mega Dropdown: NCLEX Exams */}
           <div className="relative" ref={dropdownRefs.nclexExams}>
@@ -788,47 +675,38 @@ export default function Navbar() {
                 <ul className="pl-4 mt-1 space-y-2">
                   <li>
                     <Link
-                      href="/services/ati-teas"
+                      href="/pages/exams/nclex-rn"
                       className="block py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-sm"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      ATI TEAS
+                      NCLEX-RN
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/services/hesi-a2"
+                      href="/pages/exams/nclex-pn"
                       className="block py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-sm"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      HESI A2
+                      NCLEX-PN
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/services/ged"
+                      href="/dashboards/nclex-rn"
                       className="block py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-sm"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      GED
+                      NCLEX-RN Dashboard
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/services/assignments"
+                      href="/dashboards/nclex-pn"
                       className="block py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-sm"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Assignments Help
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/services/tutoring"
-                      className="block py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-sm"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Tutoring
+                      NCLEX-PN Dashboard
                     </Link>
                   </li>
                 </ul>

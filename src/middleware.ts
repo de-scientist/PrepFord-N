@@ -1,5 +1,6 @@
 // Placed at Root Level : src\middleware.ts
 import { NextResponse, type NextRequest } from "next/server";
+import { isExcludedNonNclexPath } from "@/lib/config/nclexRouteBoundary";
 
 function safeDecode(v: string): string {
   try {
@@ -10,6 +11,12 @@ function safeDecode(v: string): string {
 }
 
 export function middleware(req: NextRequest) {
+  if (isExcludedNonNclexPath(req.nextUrl.pathname)) {
+    const notFoundUrl = req.nextUrl.clone();
+    notFoundUrl.pathname = "/_not-found";
+    return NextResponse.rewrite(notFoundUrl, { status: 404 });
+  }
+
   const h = new Headers(req.headers);
 
   const ip =

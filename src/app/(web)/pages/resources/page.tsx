@@ -38,24 +38,6 @@ interface DashboardCard {
 // Move this outside to avoid useEffect ESLint warning
 const rawCards: DashboardCard[] = [
     {
-        label: 'ATI TEAS EXAMS',
-        description: 'Assess academic preparedness for nursing school.',
-        icon: <FaBookOpen className="text-purple-600 text-3xl" />,
-        route: '/pages/exams/ati-teas',
-    },    
-    {
-        label: 'HESI A2 EXAMS',
-        description: 'Health Education Systems Inc. admissions exams.',
-        icon: <FaClipboardList className="text-rose-600 text-3xl" />,
-        route: '/pages/exams/hesi-a2',
-    },
-    {
-        label: 'NCLEX EXAMS',
-        description: 'Comprehensive NCLEX practice exams.',
-        icon: <FaAward className="text-pink-600 text-3xl" />,
-        route: '/pages/exams/nclex',
-    },
-    {
         label: 'NCLEX-RN EXAMS',
         description: 'Registered Nurse licensure exam prep.',
         icon: <FaAward className="text-green-600 text-3xl" />,
@@ -68,52 +50,28 @@ const rawCards: DashboardCard[] = [
         route: '/pages/exams/nclex-pn',
     },
     {
-        label: 'PRE NURSING EXAMS',
-        description: 'Entry-level nursing readiness assessments.',
-        icon: <FaClipboardList className="text-cyan-600 text-3xl" />,
-        route: '/pages/exams/pre-nursing',
-    },
-    {
-        label: 'RN NURSING EXAMS',
-        description: 'Registered Nurse core competency review.',
-        icon: <FaStethoscope className="text-blue-500 text-3xl" />,
-        route: '/pages/exams/rn-nursing',
-    },
-    {
-        label: 'LPN NURSING EXAMS',
-        description: 'Licensed Practical Nurse exam simulations.',
-        icon: <FaStethoscope className="text-purple-500 text-3xl" />,
-        route: '/pages/exams/lpn-nursing',
-    },
-    {
-        label: 'CNA EXAMS',
-        description: 'Certified Nursing Assistant training & evaluation.',
-        icon: <FaStethoscope className="text-teal-600 text-3xl" />,
-        route: '/pages/exams/cna',
-    },
-    {
-        label: 'GED EXAMS',
-        description: 'General Educational Development prep & tests.',
-        icon: <FaBookOpen className="text-yellow-600 text-3xl" />,
-        route: '/pages/exams/ged',
-    },
-    {
-        label: 'CERTIFICATION EXAMS',
-        description: 'Various professional healthcare certifications.',
-        icon: <FaAward className="text-red-500 text-3xl" />,
-        route: '/pages/exams/certifications',
-    },
-    {
-        label: 'Users Dashboard',
-        description: 'Manage profile, progress, and system access',
+        label: 'NCLEX-RN DASHBOARD',
+        description: 'Manage your NCLEX-RN practice exams, study hierarchy, and analytics.',
         icon: <FaUserGraduate className="text-blue-600 text-3xl" />,
-        route: '/user/dashboard',
+        route: '/dashboards/nclex-rn',
     },
     {
-        label: 'Praxis Dashboard',
-        description: 'Prep for the Praxis educator certification exams.',
+        label: 'NCLEX-PN DASHBOARD',
+        description: 'Manage your NCLEX-PN practice exams, study hierarchy, and analytics.',
+        icon: <FaStethoscope className="text-teal-600 text-3xl" />,
+        route: '/dashboards/nclex-pn',
+    },
+    {
+        label: 'NURSING STUDY NOTES',
+        description: 'Review clinical nursing notes and domain study guides.',
+        icon: <FaBookOpen className="text-purple-600 text-3xl" />,
+        route: '/pages/notes',
+    },
+    {
+        label: 'CUSTOM EXAM BUILDER',
+        description: 'Build customized NCLEX-RN and NCLEX-PN practice examinations.',
         icon: <FaClipboardList className="text-indigo-600 text-3xl" />,
-        route: '/pages/exams/praxis',
+        route: '/pages/create',
     },
 ]
 

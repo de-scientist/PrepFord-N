@@ -4,17 +4,20 @@
 // -----------------------------------------------------------------------------
 // APP INFO
 // -----------------------------------------------------------------------------
-export const APP_NAME = process.env.SKEW_LINE_APP_NAME || "EXAM GEN SYSTEM";
-export const APP_TITLE = process.env.SKEW_LINE_APP_TITLE || "EXAM GEN";
-export const APP_ACRONYM = process.env.SKEW_LINE_APP_ACRONNYM || "EG";
-export const APP_DESCRIPTION = process.env.SKEW_LINE_APP_DESCRIPTION || "Examination Generation System for Nursing Exams";
+// SITE_HEADER_NAME preserves the environment-configured SKEW_LINE_APP_NAME for
+// server-side BFF x-site-name header continuity without altering backend tenant headers.
+export const SITE_HEADER_NAME = process.env.SKEW_LINE_APP_NAME || "PrepFord";
+export const APP_NAME = "PrepFord";
+export const APP_TITLE = "PrepFord";
+export const APP_ACRONYM = "PF";
+export const APP_DESCRIPTION =
+  "A focused learning platform for NCLEX-RN and NCLEX-PN candidates, built with clinical accuracy and transparent assessment at its core.";
 export const APP_VERSION = process.env.SKEW_LINE_APP_VERSION || "1.0.0";
 export const APP_ENV = process.env.SKEW_LINE_APP_ENV || "live";
 export const APP_DEBUG = process.env.SKEW_LINE_APP_DEBUG === "true";
 export const APP_TIMEZONE = process.env.SKEW_LINE_APP_TIMEZONE || "UTC";
 export const APP_LOCALE = process.env.SKEW_LINE_APP_LOCALE || "en";
 export const APP_DOMAIN = process.env.SKEW_LINE_APP_DOMAIN || "http://localhost:3000";
-export const APP_KEY = process.env.SKEW_LINE_APP_KEY || "WEBSITE_1";
 
 // -----------------------------------------------------------------------------
 // CONTACT & SOCIAL MEDIA
@@ -48,9 +51,9 @@ export const CONTACT = {
 // EMAILS CONFIGURATION
 // -----------------------------------------------------------------------------
 export const EMAILS = {
-  SUPPORT: process.env.SKEW_LINE_SUPPORT_EMAIL || "support@examgen.com",
-  SYSTEM: process.env.SKEW_LINE_SYSTEM_EMAIL || "support@examgen.com",
-  HELP: process.env.SKEW_LINE_HELP_EMAIL || "support@examgen.com",
+  SUPPORT: process.env.SKEW_LINE_SUPPORT_EMAIL || "support@prepford.com",
+  SYSTEM: process.env.SKEW_LINE_SYSTEM_EMAIL || "support@prepford.com",
+  HELP: process.env.SKEW_LINE_HELP_EMAIL || "support@prepford.com",
 };
 
 // -----------------------------------------------------------------------------
@@ -63,14 +66,9 @@ export const PHONES = {
 };
 
 // -----------------------------------------------------------------------------
-// BACKEND API CONFIGURATION
+// BACKEND API CONFIGURATION (Active identifier only; URLs are server-only)
 // -----------------------------------------------------------------------------
-export const BACKEND = {
-  ACTIVE: process.env.SKEW_LINE_ACTIVE_BACKEND || "fastapi",
-  LARAVEL_URL: (process.env.SKEW_LINE_LARAVEL_BASE_URL || "").split(","),
-  FASTAPI_URL: (process.env.SKEW_LINE_FASTAPI_BASE_URL || "").split(","),
-  DOTNET_URL: (process.env.SKEW_LINE_DOTNET_BASE_URL || "").split(","),
-};
+export const ACTIVE_BACKEND_TYPE = process.env.SKEW_LINE_ACTIVE_BACKEND || "dotnet";
 
 // -----------------------------------------------------------------------------
 // DEVELOPER INFO
@@ -87,8 +85,8 @@ export const DEVELOPER = {
 // SEO CONFIG
 // -----------------------------------------------------------------------------
 export const SEO = {
-  author: DEVELOPER.NAME || "Exam Gen Team",
-  keywords: "Register, Login, Exam Generation, SaaS, Tech, Platform, Cloud, Web Solutions",
-  ogImage: `${CONTACT.CANONICALLINK || "https://skewblanc.com"}/images/og-banner.jpg`,
-  siteUrl: CONTACT.CANONICALLINK || "https://skewblanc.com",
+  author: DEVELOPER.NAME || "PrepFord Team",
+  keywords: "PrepFord, NCLEX-RN, NCLEX-PN, Nursing Licensure Exam Preparation, Clinical Judgment, Practice Questions",
+  ogImage: `${CONTACT.CANONICALLINK || "https://prepford.com"}/images/og-banner.jpg`,
+  siteUrl: CONTACT.CANONICALLINK || "https://prepford.com",
 };

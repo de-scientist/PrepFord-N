@@ -32,18 +32,23 @@ const LATEST_WORDS = new Set([
     "whats new", "what's new", "most recent", "just added", "recently added",
 ]);
 
-const DEFAULT_DASHBOARD = "ati-teas";
+const DEFAULT_DASHBOARD = "nclex-rn";
 const EXAM_MODES = ["Tutor", "Practice", "Exam", "Test", "Adaptive"] as const;
 
-const slugify = (s: string) =>
-    s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+const resolveSeekDashboard = (item: SeekItem): "nclex-rn" | "nclex-pn" => {
+    const candidate = `${item.programName ?? ""} ${item.segment ?? ""} ${item.name ?? ""}`.toLowerCase();
+    if (candidate.includes("nclex-pn") || candidate.includes("nclex_pn") || candidate.includes("nclex pn")) {
+        return "nclex-pn";
+    }
+    return DEFAULT_DASHBOARD;
+};
 
 const buildHref = (scope: SeekScope, item: SeekItem, mode: string): string | undefined => {
     const id = encodeURIComponent(item.guidId);
-    const dash = DEFAULT_DASHBOARD;
+    const dash = resolveSeekDashboard(item);
     switch (scope) {
         case "program":
-            return `/dashboards/${slugify(item.name) || dash}`;
+            return `/dashboards/${dash}`;
         case "course":
             return `/dashboards/${dash}/vista/learning/subjects/distinct/overview?identifier=${id}`;
         case "subject":

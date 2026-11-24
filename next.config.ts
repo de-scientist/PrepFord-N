@@ -59,12 +59,9 @@ const nextConfig: NextConfig = {
     SKEW_LINE_HELP_PHONE: process.env.SKEW_LINE_HELP_PHONE,
 
     // ---------------------------------------------------------------------
-    // BACKEND API CONFIGURATION
+    // BACKEND API CONFIGURATION (Active identifier only; base URLs are server-only)
     // ---------------------------------------------------------------------
     SKEW_LINE_ACTIVE_BACKEND: process.env.SKEW_LINE_ACTIVE_BACKEND,
-    SKEW_LINE_LARAVEL_BASE_URL: process.env.SKEW_LINE_LARAVEL_BASE_URL,
-    SKEW_LINE_FASTAPI_BASE_URL: process.env.SKEW_LINE_FASTAPI_BASE_URL,
-    SKEW_LINE_DOTNET_BASE_URL: process.env.SKEW_LINE_DOTNET_BASE_URL,
 
     // ---------------------------------------------------------------------
     // DEVELOPER INFO

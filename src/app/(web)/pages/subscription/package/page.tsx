@@ -3,7 +3,8 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { APP_NAME } from "@/lib/config/config";
+import { APP_NAME, EMAILS } from "@/lib/config/config";
+import { resolveNclexDashboardSlug } from "@/lib/config/nclexRouteBoundary";
 
 function SubscriptionPackageCallbackContent() {
   const searchParams = useSearchParams();
@@ -12,7 +13,7 @@ function SubscriptionPackageCallbackContent() {
   const subscriptionId = searchParams.get("subscriptionId") ?? undefined;
   const status = searchParams.get("status");
   const sessionId = searchParams.get("session_id") ?? undefined;
-  const dashboard = searchParams.get("dashboard") || "ati-teas";
+  const dashboard = resolveNclexDashboardSlug(searchParams.get("dashboard"));
 
   const isCancel = status === "cancel";
 
@@ -52,12 +53,18 @@ function SubscriptionPackageCallbackContent() {
           <div className="mb-6 rounded-xl border border-blue-200 bg-white/70 p-4 text-left text-sm text-slate-600">
             <p className="font-semibold text-slate-800 mb-1">What happens next</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>A receipt has been sent to your registered email.</li>
-              <li>Your plan activates automatically — no action needed from you.</li>
+              <li>A receipt is sent to your registered email once payment is confirmed by the payment provider.</li>
               <li>
-                If your access hasn&apos;t updated in a few minutes, refresh your dashboard or{" "}
+                <strong>Authoritative Verification:</strong> Return URL parameters do not activate entitlements on their own. Your plan activates only after the backend verifies provider payment status (<code>Status: Active</code>, <code>Paid: Yes</code>).
+              </li>
+              <li>
+                If your access hasn&apos;t updated in a few minutes, check your status in{" "}
+                <Link href={`/dashboards/${dashboard}/vista/subscriptions/packages`} className="text-blue-600 font-medium hover:underline">
+                  My Subscriptions
+                </Link>{" "}
+                or{" "}
                 <Link href="/pages/contact-us" className="text-blue-600 font-medium hover:underline">
-                  contact support
+                  contact support ({EMAILS.SUPPORT})
                 </Link>{" "}
                 with the Subscription ID above.
               </li>
