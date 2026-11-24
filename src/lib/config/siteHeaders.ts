@@ -1,13 +1,15 @@
 import "server-only";
 import { headers } from "next/headers";
-import { APP_KEY, APP_DOMAIN, APP_NAME } from "./config";
+import { APP_DOMAIN, SITE_HEADER_NAME } from "./config";
 
 export async function getSiteHeaders(): Promise<Record<string, string>> {
   const h = await headers();
+  const siteKey = (process.env.SKEW_LINE_APP_KEY || "").trim();
+  const siteDomain = (process.env.SKEW_LINE_APP_DOMAIN || APP_DOMAIN).trim();
   return {
-    "x-site-key": APP_KEY,
-    "x-site-domain": APP_DOMAIN,
-    "x-site-name": APP_NAME,
+    "x-site-key": siteKey,
+    "x-site-domain": siteDomain,
+    "x-site-name": SITE_HEADER_NAME,
     "x-site-path": h.get("x-current-path") || "",
     "x-site-ip-address": h.get("x-current-ip") || "",
     "x-site-location": h.get("x-current-location") || "",

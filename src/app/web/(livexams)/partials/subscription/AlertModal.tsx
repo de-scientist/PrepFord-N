@@ -1,8 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FiX } from "react-icons/fi";
+import { resolveNclexDashboardSlug } from "@/lib/config/nclexRouteBoundary";
 
 // ─────────────────────────────────────────────────────────────────────────
 // LOCAL STORAGE — Subscription Alert Suppression
@@ -51,6 +52,7 @@ export default function SubscriptionAlertModal({
     onClose: (dontShowAgain: boolean) => void;
 }) {
     const router = useRouter();
+    const pathname = usePathname();
     const [dontShowAgain, setDontShowAgain] = useState(false);
 
     useEffect(() => {
@@ -60,7 +62,9 @@ export default function SubscriptionAlertModal({
     if (!open) return null;
 
     const handleOpenSubscriptions = () => {
-        router.push("/dashboards/ati-teas/vista/subscriptions/items");
+        const panel = resolveNclexDashboardSlug(pathname);
+        if (!panel) return; // unsupported route — do not navigate
+        router.push(`/dashboards/${panel}/vista/subscriptions/items`);
     };
 
     return (
@@ -93,7 +97,7 @@ export default function SubscriptionAlertModal({
                         onClick={handleOpenSubscriptions}
                         className="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-green-700 text-white text-md font-bold transition"
                     >
-                        View Our Cheap Subscription Plans
+                        View Subscription Plans &amp; Pricing
                     </button>
 
                     <button
